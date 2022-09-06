@@ -39,7 +39,7 @@ jobs:
           sudo apt-get update
           sudo apt-get install libpq-dev
       - name: Install dependencies
-        run: bundle config set --local path 'vendor/bundle'
+        run: bundle check --path=vendor/bundle || bundle install --path=vendor/bundle --jobs=4 --retry=3
       - name: Setup environment configuration
         run: touch .sample.env .env
       - name: Install Database
